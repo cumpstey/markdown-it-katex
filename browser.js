@@ -1,18 +1,22 @@
 var md = require('markdown-it')(),
 	mk = require('./index');
 
-md.use(mk);
+md.use(mk, {
+	throwOnError: true,
+});
 
 var input = document.getElementById('input'),
 	output = document.getElementById('output'),
 	button = document.getElementById('button');
 
-button.addEventListener('click', function(ev){
-
-	var result = md.render(input.value);
-
-	output.innerHTML = result;
-
+button.addEventListener('click', function (ev) {
+	try {
+		var result = md.render(input.value);
+		output.innerHTML = result;
+	} catch (ex) {
+		console.log(ex);
+		output.innerHTML = JSON.stringify(ex);
+	}
 });
 
 /*
