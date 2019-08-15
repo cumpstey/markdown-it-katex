@@ -1,33 +1,44 @@
 {
   "name": "@cwm/markdown-it-katex",
-  "version": "0.1.0",
-  "description": "Fast math support for markdown-it with KaTeX",
-  "main": "index.js",
-  "scripts": {
-    "watch": "watchify browser.js -o bundle.js -v",
-    "test": "node test/all.js"
-  },
+  "version": "0.1.8",
+  "description": "Fast maths support for markdown-it with KaTeX",
+  "author": "Neil Cumpstey",
+  "publisher": "cumpstey",
+  "homepage": "http://cwm.me/",
+  "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:cumpstey/markdown-it-katex.git"
+    "url": "https://github.com/cumpstey/markdown-it-katex"
   },
   "keywords": [
     "markdown",
     "KaTeX",
     "math",
+    "maths",
     "LaTeX",
     "markdown-it-plugin",
     "markdown-it"
   ],
-  "author": "Neil Cumpstey",
-  "license": "MIT",
+  "main": "./build/",
+  "scripts": {
+    "watch": "watchify browser.js -o bundle.js -v",
+    "test": "node test/all.js",
+    "build": "tsc -p tsconfig.release.json"
+  },
   "dependencies": {
-    "katex": "^0.11.0"
+    "katex": "^0.11.0",
+    "markdown-it": "^9.1.0",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "markdown-it": "^8.4.1",
+    "@types/katex": "^0.10.1",
+    "@types/markdown-it": "0.0.8",
+    "@types/node": "^12.7.2",
     "markdown-it-testgen": "^0.1.6",
     "tape": "^4.9.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "^3.5.3",
     "watchify": "^3.11.1"
   }
 }

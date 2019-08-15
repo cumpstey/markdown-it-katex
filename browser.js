@@ -1,8 +1,11 @@
 var md = require('markdown-it')(),
-	mk = require('./index');
+	mk = require('./build/').default;
 
 md.use(mk, {
-	throwOnError: true,
+	throwOnError: env => env.throw,
+	macros: {
+		'\\test': '\\textbf'
+	},
 });
 
 var input = document.getElementById('input'),
@@ -11,7 +14,7 @@ var input = document.getElementById('input'),
 
 button.addEventListener('click', function (ev) {
 	try {
-		var result = md.render(input.value);
+		var result = md.render(input.value, { throw: false });
 		output.innerHTML = result;
 	} catch (ex) {
 		console.log(ex);
